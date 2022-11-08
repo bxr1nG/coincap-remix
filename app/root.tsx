@@ -1,4 +1,11 @@
-import {Links,LiveReload,Meta,Outlet,Scripts,ScrollRestoration} from "@remix-run/react";
+import {
+  Links,
+  LiveReload,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration
+} from '@remix-run/react';
 
 export default function App() {
   return (
@@ -15,7 +22,7 @@ export default function App() {
 // I will discuss in another blog post those Components coming from the remix package
 function Document({
   children,
-  title,
+  title
 }: {
   children: React.ReactNode;
   title?: string;
@@ -33,13 +40,13 @@ function Document({
         {children}
         <ScrollRestoration />
         <Scripts />
-        {process.env.NODE_ENV === "development" && <LiveReload />}
+        {process.env.NODE_ENV === 'development' && <LiveReload />}
       </body>
     </html>
   );
 }
 
 // Layout is a wrapper component that provides a consistent layout for all pages.
-function Layout({ children }: React.PropsWithChildren<{}>) {
+function Layout({ children }: React.PropsWithChildren<unknown>) {
   return <main>{children}</main>;
 }
