@@ -3,14 +3,16 @@ import type { DefaultTheme } from 'styled-components';
 export const defaultTheme: DefaultTheme = {
   borderRadius: '10rem',
   font: {
-    heading: '700 1.6rem Lato, sans-serif',
+    heading: '700 1rem Lato, sans-serif',
     body: '400 1rem Lato, sans-serif'
   },
   palette: {
     common: {
       black: '#222831',
       gray: '#212121',
-      white: '#ffffff'
+      white: '#ffffff',
+      green: '#00b894',
+      red: '#ff7675'
     },
     primary: {
       main: '#18c683',
