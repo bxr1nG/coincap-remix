@@ -1,7 +1,4 @@
-export default function Index() {
-  return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
-  );
-}
+import type { LoaderFunction } from '@remix-run/node';
+import { redirect } from '@remix-run/node';
+
+export const loader: LoaderFunction = async () => redirect('/assets');
