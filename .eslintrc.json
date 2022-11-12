@@ -26,14 +26,23 @@
   },
   "plugins": ["react", "@typescript-eslint", "prettier"],
   "rules": {
-    "prettier/prettier": 2,
     "comma-dangle": "off",
     "no-use-before-define": "off",
+    "no-confusing-arrow": "off",
+    "implicit-arrow-linebreak": "off",
+    "linebreak-style": "off",
     "react/react-in-jsx-scope": "off",
     "react/require-default-props": "off",
     "react/prop-types": "off",
+    "import/prefer-default-export": "off",
     "@typescript-eslint/comma-dangle": "off",
     "@typescript-eslint/indent": "off",
-    "@typescript-eslint/no-use-before-define": "off"
+    "@typescript-eslint/no-use-before-define": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
   }
 }
