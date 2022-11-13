@@ -1,4 +1,5 @@
 import { useLoaderData } from '@remix-run/react';
+import numeral from 'numeral';
 
 import type { DisplayAsset } from '~/types/assets';
 
@@ -19,8 +20,15 @@ function Header() {
         <Logo />
         <PricesContainer>
           {assets.map((asset) => (
-            <Price key={asset.symbol} changeSign={asset.changeSign}>
-              {`${asset.symbol}: ${asset.price}`}
+            <Price
+              key={asset.symbol}
+              changeSign={asset.changePercent24Hr[0] !== '-'}
+            >
+              {`${asset.symbol}: ${
+                +asset.priceUsd < 1
+                  ? numeral(asset.priceUsd).format('$0,0.00000')
+                  : numeral(asset.priceUsd).format('$0,0.00')
+              }`}
             </Price>
           ))}
         </PricesContainer>

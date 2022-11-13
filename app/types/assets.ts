@@ -20,8 +20,8 @@ export type Assets = {
 
 export type DisplayAsset = {
   symbol: string;
-  price: string;
-  changeSign: boolean;
+  priceUsd: string;
+  changePercent24Hr: string;
 };
 
 export type TableAsset = {
