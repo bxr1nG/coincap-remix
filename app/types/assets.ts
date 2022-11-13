@@ -9,8 +9,8 @@ export type Asset = {
   volumeUsd24Hr: string;
   priceUsd: string;
   changePercent24Hr: string;
-  vwap24Hr: string;
-  explorer: string;
+  vwap24Hr: string | null;
+  explorer: string | null;
 };
 
 export type Assets = {
@@ -22,4 +22,20 @@ export type DisplayAsset = {
   symbol: string;
   price: string;
   changeSign: boolean;
+};
+
+export type TableAsset = {
+  id: string;
+  rank: string;
+  symbol: string;
+  name: string;
+  supply: string;
+  price: string;
+  changePercent24Hr: string;
+  changeSign: boolean;
+};
+
+export type AssetHistoryStage = {
+  priceUsd: string;
+  time: number;
 };
