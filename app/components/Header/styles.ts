@@ -1,26 +1,12 @@
 import styled from 'styled-components';
 
+import { Container } from '~/styles/container';
+
 export const Header = styled('div')`
   background-color: ${(props) => props.theme.palette.common.white};
-  box-shadow: 0px 0px 10px 2px rgba(34, 40, 49, 0.2);
+  box-shadow: ${(props) => props.theme.shadow};
   font: ${(props) => props.theme.font.body};
-  color: ${(props) => props.theme.palette.common.gray};
-`;
-
-export const Container = styled('div')`
-  padding: 0 15px;
-  @media (min-width: 575.98px) {
-    padding: 0 calc(50% - 270px);
-  }
-  @media (min-width: 767.98px) {
-    padding: 0 calc(50% - 360px);
-  }
-  @media (min-width: 991.98px) {
-    padding: 0 calc(50% - 480px);
-  }
-  @media (min-width: 1199.98px) {
-    padding: 0 calc(50% - 590px);
-  }
+  color: ${(props) => props.theme.palette.common.darkGray};
 `;
 
 export const HeaderContainer = styled(Container)`
