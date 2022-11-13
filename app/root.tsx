@@ -9,13 +9,15 @@ import {
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration
+  ScrollRestoration,
+  useCatch
 } from '@remix-run/react';
 import { ThemeProvider } from 'styled-components';
 
 import type { Assets } from '~/types/assets';
 import { defaultTheme as theme } from '~/styles/theme';
 import resetStyles from '~/styles/normalize.css';
+import globalStyles from '~/styles/global.css';
 import { getThreeAssets } from '~/api/assets';
 import Header from '~/components/Header/Header';
 import { displayAssetDto } from '~/dtos/display-asset-dto';
@@ -24,6 +26,10 @@ export const links: LinksFunction = () => [
   {
     rel: 'stylesheet',
     href: resetStyles
+  },
+  {
+    rel: 'stylesheet',
+    href: globalStyles
   },
   {
     rel: 'stylesheet',
@@ -69,6 +75,23 @@ export default function App() {
   );
 }
 
+export function CatchBoundary() {
+  const caught = useCatch();
+  return (
+    <html lang="en">
+      <head>
+        <title>Oops!</title>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <h1>{`${caught.status} ${caught.statusText}`}</h1>
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function ErrorBoundary({ error }: { error: any }): JSX.Element {
   // eslint-disable-next-line no-console
@@ -81,7 +104,7 @@ export function ErrorBoundary({ error }: { error: any }): JSX.Element {
         <Links />
       </head>
       <body>
-        {error.message}
+        <h1>{error.message}</h1>
         <Scripts />
       </body>
     </html>
