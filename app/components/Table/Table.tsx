@@ -1,4 +1,5 @@
 import { useNavigate } from '@remix-run/react';
+import numeral from 'numeral';
 
 import type { TableAsset } from '~/types/assets';
 import { Button } from '~/styles/button';
@@ -48,17 +49,19 @@ function Table(props: { assets: TableAsset[] }) {
               <Symbol>{asset.symbol}</Symbol>
             </Td>
             <Td textAlign="right" hideMobile>
-              {asset.supply}
+              {numeral(asset.supply).format('(0.00a)')}
             </Td>
             <Td textAlign="right" hideMobile={false}>
-              {asset.price}
+              {+asset.priceUsd < 1
+                ? numeral(asset.priceUsd).format('$0,0.00000')
+                : numeral(asset.priceUsd).format('$0,0.00')}
             </Td>
             <PercentTd
               textAlign="right"
               hideMobile={false}
-              changeSign={asset.changeSign}
+              changeSign={asset.changePercent24Hr[0] !== '-'}
             >
-              {asset.changePercent24Hr}
+              {numeral(+asset.changePercent24Hr / 100).format('0.00%')}
             </PercentTd>
             <Td
               textAlign="center"

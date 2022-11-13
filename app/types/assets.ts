@@ -30,9 +30,8 @@ export type TableAsset = {
   symbol: string;
   name: string;
   supply: string;
-  price: string;
+  priceUsd: string;
   changePercent24Hr: string;
-  changeSign: boolean;
 };
 
 export type AssetHistoryStage = {
