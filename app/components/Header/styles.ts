@@ -23,6 +23,7 @@ export const Logo = styled('div')`
   background-position: center;
   width: 100px;
   height: 40px;
+  cursor: pointer;
 `;
 
 export const PricesContainer = styled('div')`

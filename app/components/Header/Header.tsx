@@ -1,4 +1,4 @@
-import { useLoaderData } from '@remix-run/react';
+import { useLoaderData, useNavigate } from '@remix-run/react';
 import numeral from 'numeral';
 
 import type { DisplayAsset } from '~/types/assets';
@@ -14,10 +14,15 @@ import {
 
 function Header() {
   const assets = useLoaderData<DisplayAsset[]>();
+  const navigate = useNavigate();
   return (
     <StyledHeader>
       <HeaderContainer>
-        <Logo />
+        <Logo
+          onClick={() => {
+            navigate('/assets');
+          }}
+        />
         <PricesContainer>
           {assets.map((asset) => (
             <Price
