@@ -1,7 +1,7 @@
 import type { DefaultTheme } from 'styled-components';
 
 export const defaultTheme: DefaultTheme = {
-  borderRadius: '10rem',
+  borderRadius: '0.5rem',
   shadow: '0px 0px 10px 2px rgba(34, 40, 49, 0.2)',
   font: {
     heading: '700 1rem Lato, sans-serif',
