@@ -31,6 +31,7 @@
     "no-confusing-arrow": "off",
     "implicit-arrow-linebreak": "off",
     "linebreak-style": "off",
+    "object-curly-newline": "off",
     "react/react-in-jsx-scope": "off",
     "react/require-default-props": "off",
     "react/prop-types": "off",

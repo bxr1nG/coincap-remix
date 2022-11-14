@@ -5,6 +5,7 @@ import invariant from 'tiny-invariant';
 import type { Asset, AssetHistoryStage } from '~/types/assets';
 import { getAsset, getAssetHistory } from '~/api/assets';
 import AssetCard from '~/components/AssetCard/AssetCard';
+import Chart from '~/components/Chart/Chart';
 
 export const loader: LoaderFunction = async ({ params }) => {
   invariant(params.assetId, 'expected params.assetId');
@@ -18,10 +19,15 @@ export const loader: LoaderFunction = async ({ params }) => {
 };
 
 export default function AssetsIndex() {
-  const { asset } = useLoaderData<{
+  const { asset, history } = useLoaderData<{
     asset: Asset;
     history: AssetHistoryStage[];
   }>();
 
-  return <AssetCard asset={asset} />;
+  return (
+    <>
+      <AssetCard asset={asset} />
+      <Chart data={history} />
+    </>
+  );
 }
