@@ -1,7 +1,7 @@
 import { useLoaderData, useNavigate } from '@remix-run/react';
-import numeral from 'numeral';
 
 import type { DisplayAsset } from '~/types/assets';
+import { moneyFormatter } from '~/utils/numberFormatter';
 
 import {
   Header as StyledHeader,
@@ -29,11 +29,7 @@ function Header() {
               key={asset.symbol}
               changeSign={asset.changePercent24Hr[0] !== '-'}
             >
-              {`${asset.symbol}: ${
-                +asset.priceUsd < 1
-                  ? numeral(asset.priceUsd).format('$0,0.00000')
-                  : numeral(asset.priceUsd).format('$0,0.00')
-              }`}
+              {`${asset.symbol}: ${moneyFormatter(+asset.priceUsd)}`}
             </Price>
           ))}
         </PricesContainer>

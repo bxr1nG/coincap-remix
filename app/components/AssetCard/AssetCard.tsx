@@ -1,7 +1,10 @@
-import numeral from 'numeral';
-
 import type { Asset } from '~/types/assets';
 import { Button } from '~/styles/button';
+import {
+  moneyFormatter,
+  percentageFormatter,
+  abbreviatedNumberFormatter
+} from '~/utils/numberFormatter';
 
 import {
   AdditionalInfo,
@@ -31,11 +34,9 @@ function AssetCard(props: { asset: Asset }) {
             <NameAndPrice>
               <div>{`${asset.name} (${asset.symbol})`}</div>
               <div>
-                {+asset.priceUsd < 1
-                  ? numeral(asset.priceUsd).format('$0,0.00000')
-                  : numeral(asset.priceUsd).format('$0,0.00')}
+                {moneyFormatter(+asset.priceUsd)}
                 <ChangePercent changeSign={asset.changePercent24Hr[0] !== '-'}>
-                  {numeral(+asset.changePercent24Hr / 100).format('0.00%')}
+                  {percentageFormatter(+asset.changePercent24Hr)}
                 </ChangePercent>
               </div>
             </NameAndPrice>
@@ -48,14 +49,14 @@ function AssetCard(props: { asset: Asset }) {
           <AdditionalInfoItem>
             <AdditionalInfoItemTitle>Supply</AdditionalInfoItemTitle>
             <AdditionalInfoItemValue>
-              {`${numeral(asset.supply).format('(0.00a)')} ${asset.symbol}`}
+              {`${abbreviatedNumberFormatter(+asset.supply)} ${asset.symbol}`}
             </AdditionalInfoItemValue>
           </AdditionalInfoItem>
           {asset.maxSupply && (
             <AdditionalInfoItem>
               <AdditionalInfoItemTitle>Max Supply</AdditionalInfoItemTitle>
               <AdditionalInfoItemValue>
-                {`${numeral(asset.maxSupply).format('(0.00a)')} ${
+                {`${abbreviatedNumberFormatter(+asset.maxSupply)} ${
                   asset.symbol
                 }`}
               </AdditionalInfoItemValue>
@@ -64,22 +65,20 @@ function AssetCard(props: { asset: Asset }) {
           <AdditionalInfoItem>
             <AdditionalInfoItemTitle>Market Cap</AdditionalInfoItemTitle>
             <AdditionalInfoItemValue>
-              {numeral(asset.marketCapUsd).format('($0.00a)')}
+              {abbreviatedNumberFormatter(+asset.marketCapUsd, true)}
             </AdditionalInfoItemValue>
           </AdditionalInfoItem>
           <AdditionalInfoItem>
             <AdditionalInfoItemTitle>Volume (24h)</AdditionalInfoItemTitle>
             <AdditionalInfoItemValue>
-              {numeral(asset.volumeUsd24Hr).format('($0.00a)')}
+              {abbreviatedNumberFormatter(+asset.volumeUsd24Hr, true)}
             </AdditionalInfoItemValue>
           </AdditionalInfoItem>
           {asset.vwap24Hr && (
             <AdditionalInfoItem>
               <AdditionalInfoItemTitle>Average (24h)</AdditionalInfoItemTitle>
               <AdditionalInfoItemValue>
-                {+asset.vwap24Hr < 1
-                  ? numeral(asset.vwap24Hr).format('$0,0.00000')
-                  : numeral(asset.vwap24Hr).format('$0,0.00')}
+                {moneyFormatter(+asset.vwap24Hr)}
               </AdditionalInfoItemValue>
             </AdditionalInfoItem>
           )}

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import numeral from 'numeral';
+import { exponentialFormatter, moneyFormatter } from '~/utils/numberFormatter';
 
 export const OPTIONS = {
   responsive: true,
@@ -33,13 +33,7 @@ export const OPTIONS = {
             label += ': ';
           }
           if (context.parsed.y !== null) {
-            if (+context.parsed.y < 0.01) {
-              label += numeral(context.parsed.y).format('$0,0.00000000');
-            } else if (+context.parsed.y < 1) {
-              label += numeral(context.parsed.y).format('$0,0.00000');
-            } else {
-              label += numeral(context.parsed.y).format('$0,0.00');
-            }
+            label += moneyFormatter(+context.parsed.y);
           }
           return label;
         },
@@ -74,7 +68,7 @@ export const OPTIONS = {
     y: {
       ticks: {
         callback(value: any): any {
-          return numeral(value).format('0.0e+0');
+          return `$${exponentialFormatter(+value)}`;
         },
         autoSkip: true
       }
