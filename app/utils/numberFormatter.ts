@@ -1,14 +1,22 @@
 import numeral from 'numeral';
 
-export const moneyFormatter = (value: number): string => {
+export const moneyFormatter = (
+  value: number,
+  disableUnit?: boolean
+): string => {
+  let formatString = disableUnit ? '' : '$';
   switch (true) {
     case value < 0.05:
-      return numeral(value).format('$0,0.00000000');
+      formatString += '0,0.00000000';
+      break;
     case value < 5:
-      return numeral(value).format('$0,0.00000');
+      formatString += '0,0.00000';
+      break;
     default:
-      return numeral(value).format('$0,0.00');
+      formatString += '0,0.00';
+      break;
   }
+  return numeral(value).format(formatString);
 };
 
 export const abbreviatedNumberFormatter = (
@@ -23,8 +31,4 @@ export const percentageFormatter = (
   isPercentage?: boolean
 ): string => {
   return numeral(isPercentage ? value : value / 100).format('0.00%');
-};
-
-export const exponentialFormatter = (value: number): string => {
-  return numeral(value).format('0.0e+0');
 };

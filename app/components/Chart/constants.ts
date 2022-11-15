@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { exponentialFormatter, moneyFormatter } from '~/utils/numberFormatter';
+import { moneyFormatter } from '~/utils/numberFormatter';
 
 export const OPTIONS = {
   responsive: true,
@@ -68,10 +68,12 @@ export const OPTIONS = {
     y: {
       ticks: {
         callback(value: any): any {
-          return `$${exponentialFormatter(+value)}`;
+          return moneyFormatter(+value, true);
         },
-        autoSkip: true
-      }
+        autoSkip: true,
+        mirror: true
+      },
+      position: 'right' as const
     }
   }
 };
