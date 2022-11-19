@@ -1,15 +1,41 @@
 import styled from 'styled-components';
 
-export const Input = styled('input')<{ width?: string }>`
-  border: none;
+export const Input = styled('input')<{
+  width?: string;
+  outlined?: boolean;
+  hideArrows?: boolean;
+}>`
+  border: ${(props) =>
+    props.outlined ? `2px solid ${props.theme.palette.primary.main}` : 'none'};
   border-radius: 2rem;
   padding: 0.5rem 1rem;
   font: ${(props) => props.theme.font.body};
   margin-right: 0.5rem;
-  transition: box-shadow 0.2s ease-in-out;
+  transition-property: box-shadow, border;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
   width: ${(props) => (props.width ? props.width : '5rem')};
   &:focus {
-    box-shadow: ${(props) => props.theme.shadow};
+    box-shadow: ${(props) => (props.outlined ? 'none' : props.theme.shadow)};
+    border: ${(props) =>
+      props.outlined
+        ? `2px solid ${props.theme.palette.secondary.main}`
+        : 'none'};
     outline: none;
   }
+
+  ${(props) =>
+    // eslint-disable-next-line operator-linebreak
+    props.hideArrows &&
+    `
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    &[type='number'] {
+      -moz-appearance: textfield;
+    }
+    }
+    `}
 `;
