@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { normalDateFormatter, shortDateFormatter } from '~/utils/dateFormatter';
 import { moneyFormatter } from '~/utils/numberFormatter';
 
 export const OPTIONS = {
@@ -38,12 +39,7 @@ export const OPTIONS = {
           return label;
         },
         title(context: any) {
-          return new Date(+context[0].label).toLocaleDateString('en-us', {
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric',
-            hour: '2-digit'
-          });
+          return normalDateFormatter(+context[0].label);
         }
       }
     }
@@ -52,13 +48,7 @@ export const OPTIONS = {
     x: {
       ticks: {
         callback(this: any, value: any): any {
-          return new Date(this.getLabelForValue(value)).toLocaleDateString(
-            'en-us',
-            {
-              month: '2-digit',
-              day: '2-digit'
-            }
-          );
+          return shortDateFormatter(this.getLabelForValue(value));
         },
         maxRotation: 45,
         minRotation: 45,
