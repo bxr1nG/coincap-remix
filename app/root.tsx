@@ -20,7 +20,6 @@ import resetStyles from '~/styles/normalize.css';
 import globalStyles from '~/styles/global.css';
 import { getThreeAssets } from '~/api/assets';
 import Header from '~/components/Header/Header';
-import { displayAssetDto } from '~/dtos/display-asset-dto';
 
 export const links: LinksFunction = () => [
   {
@@ -51,7 +50,7 @@ export const meta: MetaFunction = () => ({
 
 export const loader: LoaderFunction = async () => {
   const threeAssets: Assets = await getThreeAssets();
-  return threeAssets.data.map(displayAssetDto);
+  return threeAssets.data;
 };
 
 export default function App() {

@@ -2,9 +2,8 @@ import type { LoaderFunction } from '@remix-run/node';
 import { redirect } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 
-import type { Assets, TableAsset } from '~/types/assets';
+import type { Asset, Assets } from '~/types/assets';
 import { getTableAssets } from '~/api/assets';
-import { tableAssetDto } from '~/dtos/table-asset-dto';
 import AssetsPage from '~/pages/Assets/Assets';
 
 export const loader: LoaderFunction = async ({ request }) => {
@@ -20,7 +19,7 @@ export const loader: LoaderFunction = async ({ request }) => {
     : 25;
   const tableAssets: Assets = await getTableAssets(+page, itemsPerPage);
   return {
-    assets: tableAssets.data.map(tableAssetDto),
+    assets: tableAssets.data,
     page: +page,
     itemsPerPage
   };
@@ -28,7 +27,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 export default function AssetsIndex() {
   const data = useLoaderData<{
-    assets: TableAsset[];
+    assets: Asset[];
     page: number;
     itemsPerPage: number;
   }>();

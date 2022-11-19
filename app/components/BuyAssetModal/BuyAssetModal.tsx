@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from '@remix-run/react';
 
-import type { TableAsset } from '~/types/assets';
+import type { Asset } from '~/types/assets';
 import Modal from '~/components/Modal/Modal';
 import { Button } from '~/styles/button';
 import { Input } from '~/styles/input';
@@ -9,8 +9,8 @@ import { moneyFormatter } from '~/utils/numberFormatter';
 import { buyAsset } from '~/utils/portfolioManager';
 
 function BuyAssetModal(props: {
-  modalAsset: TableAsset | null;
-  setModalAsset: (asset: TableAsset | null) => void;
+  modalAsset: Asset | null;
+  setModalAsset: (asset: Asset | null) => void;
 }) {
   const { modalAsset, setModalAsset } = props;
   const [inputValue, setInputValue] = useState<number>(1);

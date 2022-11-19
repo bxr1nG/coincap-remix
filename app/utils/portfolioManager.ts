@@ -1,6 +1,6 @@
-import type { TableAsset } from '~/types/assets';
+import type { Asset } from '~/types/assets';
 
-export const buyAsset = (asset: TableAsset, amount: number): void => {
+export const buyAsset = (asset: Asset, amount: number): void => {
   const portfolio = JSON.parse(localStorage.getItem('portfolio') || '[]');
   portfolio.push({
     id: asset.id,

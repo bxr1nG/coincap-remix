@@ -18,22 +18,6 @@ export type Assets = {
   timestamp: number;
 };
 
-export type DisplayAsset = {
-  symbol: string;
-  priceUsd: string;
-  changePercent24Hr: string;
-};
-
-export type TableAsset = {
-  id: string;
-  rank: string;
-  symbol: string;
-  name: string;
-  supply: string;
-  priceUsd: string;
-  changePercent24Hr: string;
-};
-
 export type AssetHistoryStage = {
   priceUsd: string;
   time: number;

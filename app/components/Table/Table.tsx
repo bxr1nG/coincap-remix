@@ -1,6 +1,6 @@
 import { useNavigate } from '@remix-run/react';
 
-import type { TableAsset } from '~/types/assets';
+import type { Asset } from '~/types/assets';
 import { Button } from '~/styles/button';
 import {
   moneyFormatter,
@@ -19,13 +19,13 @@ import {
 import { COLUMNS } from './constants';
 
 function Table(props: {
-  assets: TableAsset[];
-  setModalAsset: (asset: TableAsset | null) => void;
+  assets: Asset[];
+  setModalAsset: (asset: Asset | null) => void;
 }) {
   const { assets, setModalAsset } = props;
   const navigate = useNavigate();
 
-  const handleRowClick = (asset: TableAsset) => {
+  const handleRowClick = (asset: Asset) => {
     setModalAsset(asset);
   };
   return (

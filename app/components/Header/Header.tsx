@@ -1,6 +1,6 @@
 import { useLoaderData, useNavigate } from '@remix-run/react';
 
-import type { DisplayAsset } from '~/types/assets';
+import type { Asset } from '~/types/assets';
 import { moneyFormatter } from '~/utils/numberFormatter';
 
 import {
@@ -13,7 +13,7 @@ import {
 } from './styles';
 
 function Header() {
-  const assets = useLoaderData<DisplayAsset[]>();
+  const assets = useLoaderData<Asset[]>();
   const navigate = useNavigate();
   return (
     <StyledHeader>
