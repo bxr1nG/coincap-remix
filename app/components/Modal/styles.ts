@@ -42,13 +42,13 @@ export const ModalClose = styled('a')`
   cursor: pointer;
 `;
 
-export const ModalContainer = styled('div')`
+export const ModalContainer = styled('div')<{ large: boolean }>`
   background: ${(props) => props.theme.palette.common.white};
   display: flex;
   flex-direction: column;
   gap: 1rem;
   max-height: 75vh;
-  max-width: 500px;
+  max-width: ${(props) => (props.large ? '750px' : '500px')};
   padding: 1rem;
   width: 100%;
   z-index: 1;

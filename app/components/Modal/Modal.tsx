@@ -16,15 +16,16 @@ function Modal(props: {
   children: JSX.Element;
   active: boolean;
   hideModal: () => void;
+  large?: boolean;
 }) {
-  const { title, footer, children, active, hideModal } = props;
+  const { title, footer, children, active, hideModal, large } = props;
   return (
     // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
       {active && (
         <ModalBlock>
           <ModalOverlay onClick={() => hideModal()} />
-          <ModalContainer>
+          <ModalContainer large={!!large}>
             <ModalHeader>
               <ModalTitle>{title}</ModalTitle>
               <ModalClose onClick={() => hideModal()}>&#9587;</ModalClose>
