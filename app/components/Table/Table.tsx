@@ -1,8 +1,12 @@
 import { useNavigate } from '@remix-run/react';
-import numeral from 'numeral';
 
 import type { TableAsset } from '~/types/assets';
 import { Button } from '~/styles/button';
+import {
+  moneyFormatter,
+  percentageFormatter,
+  abbreviatedNumberFormatter
+} from '~/utils/numberFormatter';
 
 import {
   ClickableTr,
@@ -14,9 +18,16 @@ import {
 } from './styles';
 import { COLUMNS } from './constants';
 
-function Table(props: { assets: TableAsset[] }) {
-  const { assets } = props;
+function Table(props: {
+  assets: TableAsset[];
+  setModalAsset: (asset: TableAsset | null) => void;
+}) {
+  const { assets, setModalAsset } = props;
   const navigate = useNavigate();
+
+  const handleRowClick = (asset: TableAsset) => {
+    setModalAsset(asset);
+  };
   return (
     <StyledTable>
       <Thead>
@@ -49,28 +60,27 @@ function Table(props: { assets: TableAsset[] }) {
               <Symbol>{asset.symbol}</Symbol>
             </Td>
             <Td textAlign="right" hideMobile>
-              {numeral(asset.supply).format('(0.00a)')}
+              {abbreviatedNumberFormatter(+asset.supply)}
             </Td>
             <Td textAlign="right" hideMobile={false}>
-              {+asset.priceUsd < 1
-                ? numeral(asset.priceUsd).format('$0,0.00000')
-                : numeral(asset.priceUsd).format('$0,0.00')}
+              {moneyFormatter(+asset.priceUsd)}
             </Td>
             <PercentTd
               textAlign="right"
               hideMobile={false}
               changeSign={asset.changePercent24Hr[0] !== '-'}
             >
-              {numeral(+asset.changePercent24Hr / 100).format('0.00%')}
+              {percentageFormatter(+asset.changePercent24Hr)}
             </PercentTd>
-            <Td
-              textAlign="center"
-              hideMobile
-              onClick={(e) => {
-                e.stopPropagation();
-              }}
-            >
-              <Button type="submit">+</Button>
+            <Td textAlign="center" hideMobile>
+              <Button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleRowClick(asset);
+                }}
+              >
+                +
+              </Button>
             </Td>
           </ClickableTr>
         ))}

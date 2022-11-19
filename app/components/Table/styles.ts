@@ -18,7 +18,7 @@ export const Table = styled('table')`
   @media (min-width: 575.98px) {
     overflow: hidden;
     margin-top: 3rem;
-    border-radius: 0.5rem;
+    border-radius: ${(props) => props.theme.borderRadius};
   }
 `;
 
