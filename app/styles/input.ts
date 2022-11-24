@@ -25,7 +25,6 @@ export const Input = styled('input')<{
   }
 
   ${(props) =>
-    // eslint-disable-next-line operator-linebreak
     props.hideArrows &&
     `
     &::-webkit-outer-spin-button,
