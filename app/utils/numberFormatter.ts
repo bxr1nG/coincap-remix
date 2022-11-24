@@ -2,10 +2,17 @@ import numeral from 'numeral';
 
 export const moneyFormatter = (
   value: number,
-  disableUnit?: boolean
+  disableUnit?: boolean,
+  fixedDecimal?: boolean
 ): string => {
   let formatString = disableUnit ? '' : '$';
+  if (fixedDecimal) {
+    return numeral(value).format(`${formatString}0,0.00`);
+  }
   switch (true) {
+    case value === 0:
+      formatString += '0';
+      break;
     case value < 0.05:
       formatString += '0,0.00000000';
       break;
