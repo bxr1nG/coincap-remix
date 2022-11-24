@@ -32,3 +32,10 @@ export const getAssetHistory: (id: string) => Promise<{
   );
   return response.json();
 };
+
+export const getPortfolioAssets: (
+  ids: string
+) => Promise<{ data: Asset }> = async (ids) => {
+  const response = await fetch(`https://api.coincap.io/v2/assets?ids=${ids}`);
+  return response.json();
+};
