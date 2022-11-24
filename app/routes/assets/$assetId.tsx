@@ -18,7 +18,7 @@ export const loader: LoaderFunction = async ({ params }) => {
   };
 };
 
-export default function AssetsIndex() {
+export default function AssetsId() {
   const { asset, history } = useLoaderData<{
     asset: Asset;
     history: AssetHistoryStage[];
