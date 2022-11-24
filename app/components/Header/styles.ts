@@ -28,7 +28,7 @@ export const Logo = styled('div')`
 
 export const PricesContainer = styled('div')`
   display: none;
-  @media (min-width: 767.98px) {
+  @media (min-width: 991.98px) {
     display: flex;
     align-items: center;
     gap: 1.5rem;
