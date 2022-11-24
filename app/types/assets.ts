@@ -22,3 +22,28 @@ export type AssetHistoryStage = {
   priceUsd: string;
   time: number;
 };
+
+export type LocalStorageAsset = {
+  id: string;
+  name: string;
+  amount: number;
+  price: number;
+  total: number;
+};
+
+export type PortfolioAsset = {
+  id: string;
+  name: string;
+  amount: number;
+  price: number;
+  total: number;
+  currentPrice: number;
+  currentTotal: number;
+  change: number;
+};
+
+export type PortfolioSummary = {
+  initial: number;
+  change: number;
+  changePercent: number;
+};
