@@ -12,14 +12,17 @@ import {
   ScrollRestoration,
   useCatch
 } from '@remix-run/react';
+import { useMemo } from 'react';
 import { ThemeProvider } from 'styled-components';
 
-import type { Assets } from '~/types/assets';
+import type { Assets, LocalStorageAsset } from '~/types/assets';
 import { defaultTheme as theme } from '~/styles/theme';
 import resetStyles from '~/styles/normalize.css';
 import globalStyles from '~/styles/global.css';
 import { getThreeAssets } from '~/api/assets';
 import Header from '~/components/Header/Header';
+import { PortfolioContext } from '~/context/portfolioContext';
+import { useLocalStorage } from '~/hooks/useLocalStorage';
 
 export const links: LinksFunction = () => [
   {
@@ -54,6 +57,14 @@ export const loader: LoaderFunction = async () => {
 };
 
 export default function App() {
+  const [portfolio, setPortfolio] = useLocalStorage<LocalStorageAsset[]>(
+    'portfolio',
+    []
+  );
+  const value = useMemo(
+    () => ({ portfolio, setPortfolio }),
+    [portfolio, setPortfolio]
+  );
   return (
     <html lang="en">
       <head>
@@ -62,10 +73,12 @@ export default function App() {
         {typeof document === 'undefined' ? '__STYLES__' : null}
       </head>
       <body>
-        <ThemeProvider theme={theme}>
-          <Header />
-          <Outlet />
-        </ThemeProvider>
+        <PortfolioContext.Provider value={value}>
+          <ThemeProvider theme={theme}>
+            <Header />
+            <Outlet />
+          </ThemeProvider>
+        </PortfolioContext.Provider>
         <ScrollRestoration />
         <Scripts />
         {process.env.NODE_ENV === 'development' && <LiveReload />}

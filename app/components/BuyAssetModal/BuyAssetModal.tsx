@@ -1,12 +1,11 @@
-import { useState } from 'react';
-import { useNavigate } from '@remix-run/react';
+import { useContext, useState } from 'react';
 
 import type { Asset } from '~/types/assets';
 import Modal from '~/components/Modal/Modal';
 import { Button } from '~/styles/button';
 import { Input } from '~/styles/input';
 import { moneyFormatter } from '~/utils/numberFormatter';
-import { buyAsset } from '~/utils/portfolioManager';
+import { PortfolioContext } from '~/context/portfolioContext';
 
 function BuyAssetModal(props: {
   modalAsset: Asset | null;
@@ -14,7 +13,8 @@ function BuyAssetModal(props: {
 }) {
   const { modalAsset, setModalAsset } = props;
   const [inputValue, setInputValue] = useState<number>(1);
-  const navigate = useNavigate();
+
+  const { portfolio, setPortfolio } = useContext(PortfolioContext);
   return (
     <Modal
       active={!!modalAsset}
@@ -24,12 +24,21 @@ function BuyAssetModal(props: {
       } apiece`}
       footer={
         <Button
+          disabled={!inputValue}
           onClick={() => {
             if (modalAsset) {
-              buyAsset(modalAsset, inputValue);
+              setPortfolio([
+                ...portfolio,
+                {
+                  id: modalAsset.id,
+                  name: modalAsset.name,
+                  amount: inputValue,
+                  price: +modalAsset.priceUsd,
+                  total: inputValue * +modalAsset.priceUsd
+                }
+              ]);
             }
             setModalAsset(null);
-            navigate('.', { replace: true });
           }}
         >
           Buy
