@@ -34,16 +34,3 @@ export const PricesContainer = styled('div')`
     gap: 1.5rem;
   }
 `;
-
-export const Price = styled('p')<{ changeSign: boolean }>`
-  font: ${(props) => props.theme.font.heading};
-  color: ${(props) =>
-    props.changeSign
-      ? props.theme.palette.common.green
-      : props.theme.palette.common.red};
-`;
-
-export const Portfolio = styled('div')`
-  display: flex;
-  margin-left: auto;
-`;
