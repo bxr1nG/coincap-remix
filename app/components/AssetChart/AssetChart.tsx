@@ -25,7 +25,7 @@ ChartJS.register(
   Legend
 );
 
-function Chart(props: { data: AssetHistoryStage[] }) {
+function AssetChart(props: { data: AssetHistoryStage[] }) {
   const { data } = props;
   return (
     <ChartContainer>
@@ -48,4 +48,4 @@ function Chart(props: { data: AssetHistoryStage[] }) {
   );
 }
 
-export default Chart;
+export default AssetChart;

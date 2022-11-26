@@ -5,7 +5,7 @@ import invariant from 'tiny-invariant';
 import type { Asset, AssetHistoryStage } from '~/types/assets';
 import { getAsset, getAssetHistory } from '~/api/assets';
 import AssetCard from '~/components/AssetCard/AssetCard';
-import Chart from '~/components/Chart/Chart';
+import AssetChart from '~/components/AssetChart/AssetChart';
 
 export const loader: LoaderFunction = async ({ params }) => {
   invariant(params.assetId, 'expected params.assetId');
@@ -27,7 +27,7 @@ export default function AssetsId() {
   return (
     <>
       <AssetCard asset={asset} />
-      <Chart data={history} />
+      <AssetChart data={history} />
     </>
   );
 }
