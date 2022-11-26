@@ -1,53 +1,30 @@
-# Welcome to Remix!
+# **Hiya**!
 
-- [Remix Docs](https://remix.run/docs)
+This is a project I created as a test assignment.
 
-## Development
+Here you can see information about cryptocurrencies and their price chart. You can also "buy" cryptocurrencies (add them to your portfolio, which is in localStorage). After that, you will be able to track changes in the prices of your portfolio!
 
-From your terminal:
+### Application stack
+React.js, Remix, styled-components, Chart.js.
 
-```sh
-npm run dev
-```
+### Some screenshot of the project
 
-This starts your app in development mode, rebuilding assets on file changes.
+![Log In page](./screenshots/assetsPage.png "Assets page")
 
-## Deployment
+![Profile page](./screenshots/assetPage.png "Asset page")
 
-First, build your app for production:
+![More information](./screenshots/portfolioModal.png "Portfolio modal")
 
-```sh
-npm run build
-```
+![Post page](./screenshots/buyAssetModal.png "Buy asset modal")
 
-Then run the app in production mode:
+![Admin page](./screenshots/deletePortfolioAssetModal.png "Delete portfolio asset modal")
 
-```sh
-npm start
-```
+### Post Scriptum ###
 
-Now you'll need to pick a host to deploy it to.
+Unfortunately, to "touch" the project you need to download it and run on your machine (SSR!), because I do not want to waste Heroku dynos on this (especially after it became paid).
 
-### DIY
+### How to run ###
 
-If you're familiar with deploying node applications, the built-in Remix app server is production-ready.
+`npm i`
 
-Make sure to deploy the output of `remix build`
-
-- `build/`
-- `public/build/`
-
-### Using a Template
-
-When you ran `npx create-remix@latest` there were a few choices for hosting. You can run that again to create a new project, then copy over your `app/` folder to the new project that's pre-configured for your target server.
-
-```sh
-cd ..
-# create a new project, and pick a pre-configured host
-npx create-remix@latest
-cd my-new-remix-app
-# remove the new project's app (not the old one!)
-rm -rf app
-# copy your app over
-cp -R ../my-old-remix-app/app app
-```
+`npm run dev`
