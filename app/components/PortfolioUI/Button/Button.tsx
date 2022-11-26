@@ -40,7 +40,7 @@ function PortfolioButton() {
       ...new Set(portfolio.map((asset: LocalStorageAsset) => asset.id))
     ].join(',');
     if (ids) {
-      fetcher.load(`/assets/portfolio-data?ids=${ids}`);
+      fetcher.load(`/data/portfolio?ids=${ids}`);
     }
 
     if (!portfolio.length) {
