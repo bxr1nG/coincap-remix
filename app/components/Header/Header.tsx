@@ -3,7 +3,7 @@ import { useLoaderData, useNavigate } from '@remix-run/react';
 import type { Asset } from '~/types/assets';
 import { moneyFormatter } from '~/utils/numberFormatter';
 import { Price } from '~/styles/price';
-import PortfolioButton from '~/components/PortfolioButton/PortfolioButton';
+import PortfolioButton from '~/components/PortfolioUI/Button/Button';
 
 import {
   Header as StyledHeader,

@@ -8,7 +8,7 @@ import type {
 } from '~/types/assets';
 import { Button } from '~/styles/button';
 import { PortfolioContext } from '~/context/portfolioContext';
-import PortfolioModal from '~/components/PortfolioModal/PortfolioModal';
+import PortfolioModal from '~/components/PortfolioUI/Modal/Modal';
 import {
   checkAssetsDataAvailability,
   calculatePortfolioAssets,

@@ -5,7 +5,7 @@ import { portfolioOverviewCreator } from '~/utils/portfolioHelper';
 import { PortfolioContext } from '~/context/portfolioContext';
 import { Button } from '~/styles/button';
 import Modal from '~/components/Modal/Modal';
-import PortfolioTable from '~/components/PortfolioTable/PortfolioTable';
+import PortfolioTable from '~/components/PortfolioUI/Table/Table';
 import { Price } from '~/styles/price';
 
 function PortfolioModal(props: {

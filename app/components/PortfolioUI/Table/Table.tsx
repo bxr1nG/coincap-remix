@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import type { PortfolioAsset, PortfolioSummary } from '~/types/assets';
 import { moneyFormatter, percentageFormatter } from '~/utils/numberFormatter';
-import PortfolioConfirmationModal from '~/components/PortfolioConfirmationModal/PortfolioConfirmationModal';
+import PortfolioConfirmationModal from '~/components/PortfolioUI/ConfirmationModal/ConfirmationModal';
 import { Button } from '~/styles/button';
 import {
   Table as StyledTable,
