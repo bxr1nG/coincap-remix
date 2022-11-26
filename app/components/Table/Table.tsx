@@ -7,15 +7,15 @@ import {
   percentageFormatter,
   abbreviatedNumberFormatter
 } from '~/utils/numberFormatter';
-
 import {
   ClickableTr,
   Table as StyledTable,
   Td,
   PercentTd,
-  Thead,
-  Symbol
-} from './styles';
+  Thead
+} from '~/styles/table';
+
+import { Symbol } from './styles';
 import { COLUMNS } from './constants';
 
 function Table(props: {
@@ -52,22 +52,17 @@ function Table(props: {
               navigate(`/assets/${asset.id}`);
             }}
           >
-            <Td textAlign="center" hideMobile={false}>
-              {asset.rank}
-            </Td>
-            <Td textAlign="left" hideMobile={false}>
+            <Td textAlign="center">{asset.rank}</Td>
+            <Td textAlign="left">
               <div>{asset.name}</div>
               <Symbol>{asset.symbol}</Symbol>
             </Td>
             <Td textAlign="right" hideMobile>
               {abbreviatedNumberFormatter(+asset.supply)}
             </Td>
-            <Td textAlign="right" hideMobile={false}>
-              {moneyFormatter(+asset.priceUsd)}
-            </Td>
+            <Td textAlign="right">{moneyFormatter(+asset.priceUsd)}</Td>
             <PercentTd
               textAlign="right"
-              hideMobile={false}
               changeSign={asset.changePercent24Hr[0] !== '-'}
             >
               {percentageFormatter(+asset.changePercent24Hr)}
