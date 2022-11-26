@@ -18,7 +18,7 @@ import {
 import { Symbol } from './styles';
 import { COLUMNS } from './constants';
 
-function Table(props: {
+function AssetsTable(props: {
   assets: Asset[];
   setModalAsset: (asset: Asset | null) => void;
 }) {
@@ -84,4 +84,4 @@ function Table(props: {
   );
 }
 
-export default Table;
+export default AssetsTable;

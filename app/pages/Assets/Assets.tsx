@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import type { Asset } from '~/types/assets';
-import Table from '~/components/Table/Table';
+import AssetsTable from '~/components/AssetsTable/AssetsTable';
 import PageControls from '~/components/PageControls/PageControls';
 import { Container } from '~/styles/container';
 import BuyAssetModal from '~/components/BuyAssetModal/BuyAssetModal';
@@ -20,7 +20,7 @@ function AssetsPage(props: {
     <>
       <Background />
       <TableContainer>
-        <Table assets={assets} setModalAsset={setModalAsset} />
+        <AssetsTable assets={assets} setModalAsset={setModalAsset} />
       </TableContainer>
 
       <Container>
