@@ -35,7 +35,7 @@ export function calculatePortfolioAssets(
       ...asset,
       currentPrice: +assetData.priceUsd,
       currentTotal: +assetData.priceUsd * asset.amount,
-      change: 1 - asset.price / (+assetData.priceUsd * asset.amount)
+      change: 1 - asset.total / (+assetData.priceUsd * asset.amount)
     };
   });
 }
@@ -56,11 +56,14 @@ export function calculatePortfolioSummary(portfolio: PortfolioAsset[]) {
   };
 }
 
-export function portfolioOverviewCreator(summary: PortfolioSummary) {
-  if (summary.initial === 0) {
+export function portfolioOverviewCreator(
+  summary: PortfolioSummary,
+  fullFormat?: boolean
+) {
+  if (summary.initial === 0 && !fullFormat) {
     return 'Empty portfolio';
   }
-  if (summary.initial > 1_000_000) {
+  if (summary.initial > 1_000_000 && !fullFormat) {
     return 'Too much money';
   }
   const formattedInitial = moneyFormatter(summary.initial, false, true);
