@@ -24,6 +24,7 @@ export type AssetHistoryStage = {
 };
 
 export type LocalStorageAsset = {
+  dateId: number;
   id: string;
   name: string;
   amount: number;
@@ -32,6 +33,7 @@ export type LocalStorageAsset = {
 };
 
 export type PortfolioAsset = {
+  dateId: number;
   id: string;
   name: string;
   amount: number;

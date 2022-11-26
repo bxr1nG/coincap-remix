@@ -30,6 +30,7 @@ function BuyAssetModal(props: {
               setPortfolio([
                 ...portfolio,
                 {
+                  dateId: new Date().getTime(),
                   id: modalAsset.id,
                   name: modalAsset.name,
                   amount: inputValue,
